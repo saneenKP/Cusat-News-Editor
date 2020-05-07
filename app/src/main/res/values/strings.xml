@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">CN editor</string>
+    <string name="descriptionhint">description of the event\nmust</string>
+
+    <string name="email">Email Address</string>
+
+    <string name="pass">Password</string>
+
+    <string name="cpass">Confirm Password</string>
+
+    <string name="create">Create Account</string>
+
+    <string name="login">Login</string>
+    <string name="heading">Heading :</string>
+    <string name="description">Description :</string>
+    <string name="time">Time of the Event :</string>
+    <string name="from">From - </string>
+    <string name="To">Till - </string>
+    <string name="date">"Date : "</string>
+    <string name="Venue">Venue : </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_image">Add Image</string>
+    <string name="department">Department :</string>
+    <string name="college">College :</string>
+    <string name="Upload">upload</string>
+    <string name="lorenipsumdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas quam vel pellentesque vehicula. Nulla faucibus nibh enim, tempor malesuada orci iaculis sed. Vestibulum ultrices odio lorem, ut consequat felis posuere ac. Donec iaculis euismod nulla, a vehicula nibh faucibus quis. Pellentesque nec lorem cursus, mollis dui ut, cursus metus. Cras faucibus feugiat magna dictum feugiat. Aliquam feugiat, massa sit amet pretium molestie, nibh sapien egestas nulla, varius eleifend metus libero non felis. In non ligula in diam aliquet mollis. Curabitur dictum faucibus felis, sodales accumsan nunc efficitur ac. Sed dui diam, laoreet et luctus eget, finibus et dui. Donec.</string>
+    <string name="lorenipusumhead">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..</string>
+    <string name="create_news">CREATE NEWS</string>
+    <string name="edit_news">edit_news</string>
+    <string name="delete_news">delete_news</string>
+    <string name="user_details_preferences2">com.example.cneditor.user_details_preferences2</string>
+    <string-array name="college">
+        <item>select college...</item>
+        <item>SOE</item>
+        <item>MAIN CAMPUS</item>
+        <item>CUCEK</item>
+        <item>MARINE</item>
+    </string-array>
+    <string-array name="Sdepartments">
+        <item>select department...</item>
+        <item>INFORMATION TECHNOLOGY</item>
+        <item>COMPUTER SCIENCE</item>
+        <item>ELECTRICAL ENGINEERING</item>
+        <item>MECHANICAL ENGINEERING</item>
+        <item>FIRE AND SAFETY</item>
+        <item>ELECTRONICS AND COMMUNICATION</item>
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="Cdepartments">
+        <item>select department...</item>
+        <item>INFORMATION TECHNOLOGY</item>
+        <item>COMPUTER SCIENCE</item>
+        <item>ELECTRICAL ENGINEERING</item>
+        <item>MECHANICAL ENGINEERING</item>
+        <item>ELECTRONICS AND COMMUNICATION</item>
+    </string-array>
+
+    <string-array name="Mdepartments">
+        <item>select department...</item>
+        <item>SCHOOL OF LEGAL STUDIES</item>
+        <item>SCHOOL OF MANAGEMENT</item>
+        <item>PHOTONICS</item>
+    </string-array>
+
+
+</resources>
