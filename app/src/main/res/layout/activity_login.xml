@@ -20,17 +20,16 @@
             app:hintEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="username"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="59dp"
                 app:boxStrokeColor="@color/colorPrimary"
                 android:id="@+id/username"
-
-
+                android:textSize="16sp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,15 +40,16 @@
             app:hintEnabled="true"
             android:hint="password"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="59dp"
                 android:id="@+id/password"
+                android:textSize="16sp"
                 app:boxStrokeColor="@color/colorPrimary"
                 android:inputType="textPassword"/>
 
@@ -58,19 +58,21 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:text="login"
             android:layout_gravity="center"
             android:id="@+id/login"
-            android:layout_margin="20dp"
+            android:layout_margin="25dp"
+            android:textSize="14sp"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             />
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:id="@+id/create"
+            android:textSize="14sp"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:text="create account"
             android:layout_marginStart="20dp"

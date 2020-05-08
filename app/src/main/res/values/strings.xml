@@ -29,6 +29,7 @@
     <string name="edit_news">edit_news</string>
     <string name="delete_news">delete_news</string>
     <string name="user_details_preferences2">com.example.cneditor.user_details_preferences2</string>
+    <string name="sign_up">Create</string>
     <string-array name="college">
         <item>select college...</item>
         <item>SOE</item>

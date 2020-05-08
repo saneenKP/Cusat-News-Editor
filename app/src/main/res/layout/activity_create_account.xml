@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
+            android:textSize="16sp"
             android:id="@+id/email"
 
             />
@@ -49,6 +50,7 @@
             android:padding="15dp"
             android:inputType="textPassword"
             android:maxLength="15"
+            android:textSize="16sp"
             android:id="@+id/pass"
 
             />
@@ -69,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
+            android:textSize="16sp"
             android:maxLength="15"
             android:inputType="textPassword"
             android:id="@+id/cpass"
@@ -95,11 +98,13 @@
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="214dp"
+        android:layout_height="62dp"
         android:id="@+id/create"
         android:layout_margin="20dp"
         android:layout_gravity="center"
-        android:textSize="22sp"/>
+        style="@style/Widget.MaterialComponents.Button"
+        android:text="@string/sign_up"
+        android:textSize="16sp"/>
 
 </LinearLayout>

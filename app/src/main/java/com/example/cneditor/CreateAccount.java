@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -87,7 +88,7 @@ public class CreateAccount extends AppCompatActivity implements AdapterView.OnIt
         dept = new Spinner(this);
         dept.setOnItemSelectedListener(this);
         dept.setId(SPINNER_ID);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,59);
         dept.setLayoutParams(layoutParams);
 
         pss.addTextChangedListener(new TextWatcher() {
@@ -289,7 +290,7 @@ public class CreateAccount extends AppCompatActivity implements AdapterView.OnIt
 
     void toast(String s)
     {
-        Toast.makeText(getApplicationContext(), s , Toast.LENGTH_LONG).show();
+        Snackbar.make(rootlayout,s, BaseTransientBottomBar.LENGTH_LONG).show();
     }
 
 
