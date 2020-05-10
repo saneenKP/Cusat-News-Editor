@@ -61,12 +61,6 @@ public class Add_image_fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_image_fragment, container, false);
 
 
-        try {
-            ActionBar ac = mainActivity.getsupportactionbar();
-            ac.setTitle("Add Message Details");
-        }catch (NullPointerException e){}
-
-
         image = view.findViewById(R.id.image);
         mcontext = getContext();
 

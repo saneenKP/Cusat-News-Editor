@@ -1,7 +1,9 @@
 package com.example.cneditor;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -14,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,21 +28,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Add_Details.OnDetailsReadListener {
 
-    FloatingActionButton upload;
-    long User_key;
-    String user_college , user_department;
-    Intent i , view_preview;
+
     FragmentManager fragmentManager;
-    MessageDetails messageDetails;
     Add_Details add_details_fragment;
     Add_image_fragment add_image_fragment;
     FragmentTransaction fragmentTransaction;
-    CreateKey message_key;
-    ActionBar actionBar;
-    String current_date;
-    int count=0;
+    Button preview;
+    ImageButton fragment_switch;
+    MessageDetails get_details_for_preview = new MessageDetails();
 
 
     @Override
@@ -46,14 +45,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        try {
+            getSupportActionBar().hide();
+        }catch (NullPointerException e){}
+
+
         fragmentManager = getSupportFragmentManager();
-        upload = findViewById(R.id.upload);
-        messageDetails = new MessageDetails();
-        message_key = new CreateKey();
+        add_details_fragment = new Add_Details();
+        preview =  findViewById(R.id.top_preview_button);
+        fragment_switch = findViewById(R.id.Fragment_switch);
 
-        current_date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
-        if(findViewById(R.id.fragment_container)!=null)
+        if(findViewById(R.id.image_fragment_container)!=null)
         {
             if (savedInstanceState!=null)
             {
@@ -62,15 +65,59 @@ public class MainActivity extends AppCompatActivity {
 
             fragmentTransaction = fragmentManager.beginTransaction();
             add_details_fragment = new Add_Details();
-            fragmentTransaction.add(R.id.fragment_container , add_details_fragment ,null);
+            fragmentTransaction.add(R.id.image_fragment_container , add_details_fragment ,null);
             fragmentTransaction.commit();
         }
 
-        upload.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+
+        fragment_switch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                messageDetails = add_details_fragment.getmsgdetails();
-                messageDetails.setDate_published(current_date);
+
+                    Fragment current_fragment = getSupportFragmentManager().findFragmentById(R.id.image_fragment_container);
+
+                    if (current_fragment instanceof Add_Details)
+                    {
+                        Intent i = new Intent(MainActivity.this,ChooseOption.class);
+
+                        startActivity(i);
+                    }
+                    else
+                    {
+                        fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+                        fragmentManager.popBackStack();
+                    }
+
+            }
+        });
+
+        preview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                add_details_fragment.SetViewError();
+                if (add_details_fragment.getviewstatus())
+                {
+                    add_details_fragment.Setup_Preview(1);
+                    Intent preview_from_msg_details = new Intent(MainActivity.this,Preview.class);
+                    preview_from_msg_details.putExtra("PreviewDetails",get_details_for_preview);
+                    startActivity(preview_from_msg_details);
+                }
+                else
+                {
+                    add_details_fragment.SetViewError();
+                }
+            }
+        });
+
+        /*upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
                 if (add_details_fragment.getviewstatus())
                 {
@@ -80,13 +127,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        messageDetails.setDate_published(current_date);
-                        messageDetails.setCollege("Conchin University");
-                        messageDetails.setDepartment("Information Technology");
-                        messageDetails.setMessage_id(message_key.GetKey(messageDetails.getTitle()+messageDetails.getDate()+messageDetails.getDescription()));
-                        if (count==0)
+                        /*if (count==0)
                         {
-                            Commitfragment();
                             count++;
                         }
                         else
@@ -111,37 +153,23 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
     }
 
-    ActionBar getsupportactionbar()
+    @Override
+    public void OnDetailsRead(MessageDetails messageDetails)
     {
-        actionBar = getSupportActionBar();
-        return actionBar;
+        get_details_for_preview = messageDetails;
     }
 
-    void get_user_data()
-    {
 
-    }
 
 
     //Method to add add_image fragment.
-    void Commitfragment()
-    {
-        add_image_fragment = new Add_image_fragment();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
-        fragmentTransaction.replace(R.id.fragment_container,add_image_fragment,null).commit();
 
-    }
 
     //Method to check if Date and Time is missing or not.
-    boolean checkdetails()
-    {
-        return TextUtils.isEmpty(messageDetails.getDate()) || TextUtils.isEmpty(messageDetails.getTime_from());
-    }
 
 
 

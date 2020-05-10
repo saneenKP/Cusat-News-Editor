@@ -3,14 +3,16 @@ package com.example.cneditor;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.security.PrivateKey;
+import java.util.HashMap;
 
 public class SharedPreferencesConfig
 {
 
     private SharedPreferences sharedPreferences;
     Context context;
-    MessageDetails PreferenceDetails;
+    HashMap<String , String> PreferenceDetails;
+
+
     public SharedPreferencesConfig(Context context)
     {
          this.context = context;
@@ -25,12 +27,12 @@ public class SharedPreferencesConfig
         editor.apply();
     }
 
-    MessageDetails getpreferences()
+    HashMap<String, String> getpreferences()
     {
-        PreferenceDetails = new MessageDetails();
-        PreferenceDetails.setUser_key(sharedPreferences.getLong("user_key",12345));
-        PreferenceDetails.setCollege(sharedPreferences.getString("user_college" , "college"));
-        PreferenceDetails.setDepartment(sharedPreferences.getString("user_department" ,"department"));
+        PreferenceDetails = new HashMap<>();
+        PreferenceDetails.put("user_key",Long.toString(sharedPreferences.getLong("user_key",12345)));
+        PreferenceDetails.put("user_college",sharedPreferences.getString("user_college" , "college"));
+        PreferenceDetails.put("user_department",sharedPreferences.getString("user_department" ,"department"));
         return PreferenceDetails;
     }
 

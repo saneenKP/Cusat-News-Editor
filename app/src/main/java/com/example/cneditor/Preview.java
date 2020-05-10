@@ -35,7 +35,6 @@ public class Preview extends AppCompatActivity {
     TextView heading , description , date , venue , department , college;
     ImageView preview_image;
     MessageDetails preview_details;
-    Intent from_main;
     String image_uri_string;
     DatabaseReference mdatabase;
     FirebaseStorage firebaseStorage;
@@ -52,17 +51,17 @@ public class Preview extends AppCompatActivity {
 
         sharedPreferencesConfig = new SharedPreferencesConfig(getApplicationContext());
 
-        ActionBar actionBar = getSupportActionBar();
         try {
-            actionBar.setTitle("Preview");
-        }catch (NullPointerException e){}
+            getSupportActionBar().hide();
+            }catch (NullPointerException e){}
 
         mdatabase = FirebaseDatabase.getInstance().getReference();
 
-        from_main =getIntent();
+        Intent from_main = getIntent();
         preview_details = (MessageDetails) from_main.getSerializableExtra("PreviewDetails");
-        Bundle b = getIntent().getExtras();
-        image_uri_string = b.getString("image_uri");
+
+        //Bundle b = getIntent().getExtras();
+        //image_uri_string = b.getString("image_uri");
 
 
         heading = findViewById(R.id.preview_heading);
@@ -73,14 +72,10 @@ public class Preview extends AppCompatActivity {
         department = findViewById(R.id.preview_department);
         preview_image = findViewById(R.id.preview_image);
 
-        heading.setText(preview_details.getTitle());
-        department.setText(preview_details.getDepartment());
-        description.setText(preview_details.getDescription());
-        date.setText(preview_details.getDate());
-        college.setText(preview_details.getCollege());
-        venue.setText(preview_details.getVenue());
+        Set_Preview_details();
 
-        image_uri = Uri.parse(image_uri_string);
+
+        //image_uri = Uri.parse(image_uri_string);
         preview_image.setImageURI(image_uri);
 
         firebaseStorage = FirebaseStorage.getInstance();
@@ -96,13 +91,24 @@ public class Preview extends AppCompatActivity {
 
     }
 
-    void uploadData()
+    void Set_Preview_details()
+    {
+        heading.setText(preview_details.getTitle());
+        description.setText(preview_details.getDescription());
+
+        date.setText(preview_details.getDate());
+        college.setText(preview_details.getCollege());
+        department.setText(preview_details.getDepartment());
+        venue.setText(preview_details.getVenue());
+    }
+
+   /* void uploadData()
     {
         preview_details.setCollege(sharedPreferencesConfig.getpreferences().getCollege());
         preview_details.setDepartment(sharedPreferencesConfig.getpreferences().getDepartment());
         preview_details.setUser_key(sharedPreferencesConfig.getpreferences().getUser_key());
         mdatabase.child("News").push().setValue(preview_details);
-    }
+    }*/
 
     void uploadimage()
     {
@@ -119,7 +125,7 @@ public class Preview extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
-                            uploadData();
+                            //uploadData();
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext() , "Uploadedsafsfs",Toast.LENGTH_SHORT).show();
 

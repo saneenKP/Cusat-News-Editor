@@ -56,13 +56,13 @@ public class Check_userkey_fragment extends Fragment
             @Override
             public void onClick(View view) {
 
-                if(Long.parseLong(get_key.getText().toString())== (sharedPreferencesConfig.getpreferences().getUser_key()))
+               /* if(Long.parseLong(get_key.getText().toString())== (sharedPreferencesConfig.getpreferences().getUser_key()))
                 {
                         fragmentTransaction.replace(R.id.edit_news_container,viewNewstoEdit_fragement,null);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
 
-                }
+                }*/
             }
         });
 

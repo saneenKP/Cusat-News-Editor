@@ -30,6 +30,8 @@
     <string name="delete_news">delete_news</string>
     <string name="user_details_preferences2">com.example.cneditor.user_details_preferences2</string>
     <string name="sign_up">Create</string>
+    <string name="preview_button">Preview</string>
+    <string name="Attach_image">Attach Images</string>
     <string-array name="college">
         <item>select college...</item>
         <item>SOE</item>
