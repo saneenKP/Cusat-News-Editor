@@ -21,6 +21,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,9 +31,12 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -45,6 +49,8 @@ public class Add_image_fragment extends Fragment {
     ImageView image;
     Context mcontext;
     Uri imageuri;
+    String image_name;
+    Button upload_image;
     MainActivity mainActivity;
     private static int IMAGE_CODE = 1001;
     private static int REQUEST_CODE = 1002;
@@ -53,18 +59,17 @@ public class Add_image_fragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_image_fragment, container, false);
 
-
+        upload_image = view.findViewById(R.id.upload_image);
         image = view.findViewById(R.id.image);
         mcontext = getContext();
 
-        image.setOnClickListener(new View.OnClickListener() {
+        upload_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -125,7 +130,6 @@ public class Add_image_fragment extends Fragment {
            }
        }
 
-
     }
 
     @Override
@@ -134,7 +138,14 @@ public class Add_image_fragment extends Fragment {
         if (resultCode == RESULT_OK && requestCode == IMAGE_CODE)
         {
             imageuri = data.getData();
+            image.setImageDrawable(null);
             image.setImageURI(imageuri);
+            String image_path = imageuri.getPath();
+            File tmp = new File(image_path);
+
+           Toast.makeText(mcontext , tmp.getName() , Toast.LENGTH_LONG).show();
+
+
         }
     }
 

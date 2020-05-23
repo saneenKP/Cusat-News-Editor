@@ -171,6 +171,9 @@ public class Add_Details extends Fragment {
         get_editextValues();
         HashMap<String,String> hashMap = sharedPreferencesConfig.getpreferences();
 
+        Log.d("HEADDINGG" , heading);
+        Log.d("DESc",description);
+        Log.d("DATE",date);
         messageDetails.setCollege(hashMap.get("user_college"));
         messageDetails.setDepartment(hashMap.get("user_department"));
         messageDetails.setMessage_id(message_key.GetKey(heading+description+date));

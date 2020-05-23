@@ -20,6 +20,15 @@ public class MessageDetails implements Serializable {
     private String Date_published;
     private String Message_id;
     private String image_url;
+    private String images_key;
+
+    public String getImages_key() {
+        return images_key;
+    }
+
+    public void setImages_key(String images_key) {
+        this.images_key = images_key;
+    }
 
     public void setTitle(String title) {
         this.title = title;
