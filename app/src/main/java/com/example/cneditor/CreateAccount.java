@@ -51,7 +51,7 @@ public class CreateAccount extends AppCompatActivity implements AdapterView.OnIt
     SharedPreferencesConfig sharedPreferencesConfig;
     FirebaseAuth auth;
     LinearLayout containerlayout,rootlayout;
-    Long key;
+    String key;
     Intent BackToLogin;
     CreateKey createKey;
 
@@ -174,7 +174,7 @@ public class CreateAccount extends AppCompatActivity implements AdapterView.OnIt
                 }
                 else
                 {
-                    key = Long.parseLong(createKey.GetKey(getm(email)+password));
+                    key = createKey.GetKey(getm(email)+password);
                     accDetails.setEmail(email);
                     accDetails.setPassword(password);
                     accDetails.setCollege(college);
@@ -183,7 +183,7 @@ public class CreateAccount extends AppCompatActivity implements AdapterView.OnIt
                     accDetails.setDepartment(department);
 
                     accDetails.setKey(key);
-                    sharedPreferencesConfig.writepreferences(key , college , department);
+                    sharedPreferencesConfig.WritePreferences(key , college , department);
                     progress.show();
                     createacc(email , password);
 
@@ -253,7 +253,7 @@ public class CreateAccount extends AppCompatActivity implements AdapterView.OnIt
                     progress.dismiss();
                     Snackbar snackbar = Snackbar.make(rootlayout,"Account Created",Snackbar.LENGTH_LONG);
                     snackbar.show();
-                    mdatabase.child("users").push().setValue(accDetails);
+                    mdatabase.child("users").child(key).setValue(accDetails);
                     mdatabase.child("keys").push().setValue(key);
                     createDialog();
                 }

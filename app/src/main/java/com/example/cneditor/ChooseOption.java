@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,12 +18,17 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class ChooseOption extends AppCompatActivity {
 
     Button Create_news , Edit_news , Delete_news;
     Intent open , i;
     FirebaseAuth auth;
     EditNews editNews;
+    SharedPreferencesConfig sharedPreferencesConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,7 @@ public class ChooseOption extends AppCompatActivity {
         Delete_news = findViewById(R.id.Delte_news);
 
 
+        sharedPreferencesConfig = new SharedPreferencesConfig(getApplicationContext());
 
         Create_news.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,12 +81,20 @@ public class ChooseOption extends AppCompatActivity {
         return true;
     }
 
+    void Toast(String s)
+    {
+        Toast.makeText(getApplicationContext() , s , Toast.LENGTH_LONG).show();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId())
         {
-            case R.id.logout : auth.signOut();
+            case R.id.logout :
+                Toast(sharedPreferencesConfig.GetPreferences().get("college"));
+                sharedPreferencesConfig.clear_preferences();
+                auth.signOut();
                 i = new Intent(ChooseOption.this,login.class);
                 startActivity(i);
                 finish();

@@ -169,12 +169,12 @@ public class Add_Details extends Fragment {
     public void AddUserDetails()
     {
         get_editextValues();
-        HashMap<String,String> hashMap = sharedPreferencesConfig.getpreferences();
+        HashMap<String,String> hashMap;// = sharedPreferencesConfig.getpreferences();
 
         Log.d("HEADDINGG" , heading);
         Log.d("DESc",description);
         Log.d("DATE",date);
-        messageDetails.setCollege(hashMap.get("user_college"));
+        /*messageDetails.setCollege(hashMap.get("user_college"));
         messageDetails.setDepartment(hashMap.get("user_department"));
         messageDetails.setMessage_id(message_key.GetKey(heading+description+date));
         messageDetails.setTitle(heading);
@@ -183,7 +183,7 @@ public class Add_Details extends Fragment {
         messageDetails.setTime_from(time_from);
         messageDetails.setTime_till(time_till);
         messageDetails.setVenue(venue);
-        messageDetails.setDate_published(current_date);
+        messageDetails.setDate_published(current_date);*/
 
     }
 

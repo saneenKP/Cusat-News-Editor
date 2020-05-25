@@ -29,6 +29,7 @@ public class login extends AppCompatActivity {
     FirebaseAuth auth;
     ProgressDialog progressDialog;
     FirebaseUser user;
+    SharedPreferencesConfig sharedPreferencesConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,9 @@ public class login extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
+
+        sharedPreferencesConfig = new SharedPreferencesConfig(getApplicationContext());
+        Toast.makeText(getApplicationContext() , sharedPreferencesConfig.GetPreferences().get("college") , Toast.LENGTH_LONG).show();
 
         StartLogin = new Intent(login.this , ChooseOption.class);
         StartCreateAcc = new Intent(login.this,CreateAccount.class);
@@ -86,23 +90,43 @@ public class login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if (task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     progressDialog.dismiss();
                     user = auth.getCurrentUser();
-                    StartLogin = new Intent(getApplicationContext(),MainActivity.class);
+                    StartLogin = new Intent(getApplicationContext(), RecollectPreferences.class);
+                    CreateKey cr = new CreateKey();
+                    StartLogin.putExtra("key", cr.GetKey(getm(usrnm) + pass));
                     startActivity(StartLogin);
-                    finish();
                 }
                 else
-                {
-                    progressDialog.dismiss();
-                    Log.w("LOGIN FAILEDDDD", "signInWithEmail:failure", task.getException());
-                    Toast.makeText(getApplicationContext(), "Authentication failed.",
-                            Toast.LENGTH_SHORT).show();
+                    {
+                        progressDialog.dismiss();
+                        Log.w("LOGIN FAILEDDDD", "signInWithEmail:failure", task.getException());
+                        Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
+
         });
+    }
+    String getm(String e)
+    {
+
+        String l = new String();
+        int i=0;
+        while(i< e.length())
+        {
+            if(e.charAt(i) == '@')
+            {
+                break;
+            }
+            else
+            {
+                l = l + e.charAt(i);
+                i++;
+            }
+        }
+        return l;
     }
 
     @Override

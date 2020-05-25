@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeleteNews"></activity>
+        <activity
+            android:name=".RecollectPreferences"
+            android:label="@string/title_activity_recollect_preferences"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DeleteNews" />
         <activity android:name=".EditNews" />
         <activity android:name=".ChooseOption" />
         <activity android:name=".Preview" />

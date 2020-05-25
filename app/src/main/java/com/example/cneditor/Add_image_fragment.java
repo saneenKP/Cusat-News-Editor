@@ -13,9 +13,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -28,12 +31,15 @@ import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,11 +55,11 @@ public class Add_image_fragment extends Fragment {
     ImageView image;
     Context mcontext;
     Uri imageuri;
-    String image_name;
     Button upload_image;
-    MainActivity mainActivity;
+    RecyclerView recyclerView;
     private static int IMAGE_CODE = 1001;
     private static int REQUEST_CODE = 1002;
+
 
     public Add_image_fragment() {
         // Required empty public constructor
@@ -67,6 +73,7 @@ public class Add_image_fragment extends Fragment {
 
         upload_image = view.findViewById(R.id.upload_image);
         image = view.findViewById(R.id.image);
+        recyclerView = view.findViewById(R.id.image_list);
         mcontext = getContext();
 
         upload_image.setOnClickListener(new View.OnClickListener() {
@@ -138,15 +145,26 @@ public class Add_image_fragment extends Fragment {
         if (resultCode == RESULT_OK && requestCode == IMAGE_CODE)
         {
             imageuri = data.getData();
-            image.setImageDrawable(null);
-            image.setImageURI(imageuri);
+            Glide
+                    .with(mcontext)
+                    .load(imageuri)
+                    .into(image);
+
             String image_path = imageuri.getPath();
             File tmp = new File(image_path);
-
-           Toast.makeText(mcontext , tmp.getName() , Toast.LENGTH_LONG).show();
-
-
+            set_recycler(tmp.getName());
         }
+    }
+
+    void set_recycler(String imagename)
+    {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        List<String> list = new LinkedList<>();
+        list.add(imagename);
+        ImageNameAdapter imageNameAdapter = new ImageNameAdapter(list,getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(imageNameAdapter);
     }
 
     public Uri getimageuri()

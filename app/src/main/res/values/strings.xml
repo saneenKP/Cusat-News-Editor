@@ -28,10 +28,21 @@
     <string name="create_news">CREATE NEWS</string>
     <string name="edit_news">edit_news</string>
     <string name="delete_news">delete_news</string>
-    <string name="user_details_preferences2">com.example.cneditor.user_details_preferences2</string>
+    <string name="user_details_preferences1">com.example.cneditor.user_details_preferences1</string>
     <string name="sign_up">Create</string>
     <string name="preview_button">Preview</string>
     <string name="Attach_image">Attach Images</string>
+    <string name="title_activity_recollect_preferences">RecollectPreferences</string>
+    <string name="first_fragment_label">First Fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string-array name="college">
         <item>select college...</item>
         <item>SOE</item>
@@ -50,7 +61,6 @@
 
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="Cdepartments">
         <item>select department...</item>
         <item>INFORMATION TECHNOLOGY</item>
@@ -59,7 +69,6 @@
         <item>MECHANICAL ENGINEERING</item>
         <item>ELECTRONICS AND COMMUNICATION</item>
     </string-array>
-
     <string-array name="Mdepartments">
         <item>select department...</item>
         <item>SCHOOL OF LEGAL STUDIES</item>

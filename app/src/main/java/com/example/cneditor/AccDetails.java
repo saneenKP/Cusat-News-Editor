@@ -2,7 +2,7 @@ package com.example.cneditor;
 
 public class AccDetails
 {
-    public AccDetails(String email, String password, String department, String college , long key) {
+    public AccDetails(String email, String password, String department, String college , String key) {
         this.email = email;
         this.password = password;
         this.department = department;
@@ -34,12 +34,12 @@ public class AccDetails
     String password;
     String department;
     String college;
-    long key;
+    String key;
 
-    public long getKey() {
+    public String getKey() {
         return key;
     }
-    public void setKey(long key){this.key = key;}
+    public void setKey(String key){this.key = key;}
 
     public void setEmail(String email) {
         this.email = email;

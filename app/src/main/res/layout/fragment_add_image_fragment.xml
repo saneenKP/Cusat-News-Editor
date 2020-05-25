@@ -15,8 +15,8 @@
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <ImageView
@@ -26,6 +26,7 @@
                 android:src="@drawable/avatar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/upload_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -41,21 +42,25 @@
                 android:id="@+id/upload_image"
                 android:layout_width="214dp"
                 android:layout_height="60dp"
-                android:text="Button"
+                android:text="@string/Upload"
                 app:layout_constraintBottom_toBottomOf="@+id/image_bar"
                 app:layout_constraintEnd_toEndOf="@+id/image_bar"
                 app:layout_constraintStart_toStartOf="@+id/image_bar"
-                app:layout_constraintTop_toTopOf="@+id/image_bar" />
+                app:layout_constraintTop_toBottomOf="@+id/image"  />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="485dp"
-                android:layout_height="363dp"
                 android:id="@+id/image_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_bar"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteX="1dp" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/upload_image" />
 
 
 
